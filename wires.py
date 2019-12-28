@@ -45,6 +45,24 @@ def get_closest_distance(intersects):
     return min(distances)
 
 
+def get_shortest_path_with_intersect(intersections, coordinates):
+    wire1 = []
+    wire2 = []
+    for intersect in intersections:
+        steps = 0
+        for coord in coordinates[0]:
+            if intersect == coord:
+                wire1.append(steps)
+            steps += 1
+        steps = 0
+        for coord in coordinates[1]:
+            if intersect == coord:
+                wire2.append(steps)
+            steps += 1
+    total = (x+y for x,y in zip(wire1, wire2))
+
+    return min(total)
+
 if __name__ == '__main__':
     coordinates = []
     with open('traces.txt') as traces:
@@ -53,4 +71,7 @@ if __name__ == '__main__':
 
     intersections = get_intersect(coordinates)
     distance = get_closest_distance(intersections)
-    print(distance)
+    print('Closest intersection:', distance)
+
+    distance = get_shortest_path_with_intersect(intersections, coordinates)
+    print('Shortest path intersection', distance)
