@@ -10,16 +10,12 @@ def get_coordinates(trace):
         new_y = 0
         if movement.startswith('R'):
             new_x = int(movement.replace('R', ''))
-            print(new_x)
         if movement.startswith('L'):
             new_x = 0 - int(movement.replace('L', ''))
-            print(new_x)
         if movement.startswith('U'):
             new_y = int(movement.replace('U', ''))
-            print(new_y)
         if movement.startswith('D'):
             new_y = 0 - int(movement.replace('D', ''))
-            print(new_y)
         if new_x != 0:
             for _ in range(abs(new_x)):
                 if new_x > 0:
@@ -34,8 +30,6 @@ def get_coordinates(trace):
                 else:
                     y -= 1
                 coordinates.append((x, y))
-
-    print(coordinates)
     return coordinates
 
 
@@ -45,18 +39,10 @@ def get_intersect(coordinates):
 
 def get_closest_distance(intersects):
     distances = []
-    d = 0
     for element in intersects:
         x, y = element
-        distance = abs(x)+abs(y)
-        distances.append(distance)
-        if d > 0:
-            if distance < d:
-                d = distance
-        else:
-            d = distance
-    print(distances)
-    print(d)
+        distances.append(abs(x)+abs(y))
+    return min(distances)
 
 
 if __name__ == '__main__':
@@ -66,5 +52,5 @@ if __name__ == '__main__':
             coordinates.append(get_coordinates(trace))
 
     intersections = get_intersect(coordinates)
-    print(intersections)
     distance = get_closest_distance(intersections)
+    print(distance)

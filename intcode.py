@@ -34,22 +34,19 @@ def process_to (noun, verb):
     process(code)
     return code
 
+
 def get_result(result):
     noun = 0
     verb = 0
     code = [0]
     for noun in range(0, 100):
         for verb in range(0, 100):
-            #print('noun', noun, 'verb', verb)
             code = process_to(noun, verb)
-            #print(code)
-            #print(basecode)
             if code[0] == result:
                 return code
 
 
 if __name__ == '__main__':
-    #code = process_to(12,2)
     code = get_result(19690720)
 
     for value in code:
