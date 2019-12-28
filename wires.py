@@ -63,6 +63,7 @@ def get_shortest_path_with_intersect(intersections, coordinates):
 
     return min(total)
 
+
 if __name__ == '__main__':
     coordinates = []
     with open('traces.txt') as traces:
